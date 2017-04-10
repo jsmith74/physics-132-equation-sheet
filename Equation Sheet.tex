@@ -1,0 +1,353 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+%\usepackage[lf]{MyriadPro}
+%\usepackage[lf,minionint]{MinionPro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[top=0mm,bottom=1mm,left=0mm,right=1mm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+
+\let\bar\overline
+
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+
+\colorlet{circle edge}{myblue}
+\colorlet{circle area}{myblue!5}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+	outline/.style={draw=circle edge, thick}}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\everymath\expandafter{\the\everymath \color{myblue}}
+\everydisplay\expandafter{\the\everydisplay \color{myblue}}
+
+\renewcommand{\baselinestretch}{.8}
+\pagestyle{empty}
+
+\global\mdfdefinestyle{header}{%
+	linecolor=gray,linewidth=1pt,%
+	leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
+}
+
+\newcommand{\header}{
+	\begin{mdframed}[style=header]
+		\footnotesize
+		\sffamily
+		Equation Sheet for Physics 132
+	\end{mdframed}
+}
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{.2ex}%
+	{.2ex}%x
+	{\color{myblue}\sffamily\small\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}%
+	{.2ex}%
+	{.2ex}%x
+	{\sffamily\bfseries}}
+
+
+
+\def\multi@column@out{%
+	\ifnum\outputpenalty <-\@M
+	\speci@ls \else
+	\ifvoid\colbreak@box\else
+	\mult@info\@ne{Re-adding forced
+		break(s) for splitting}%
+	\setbox\@cclv\vbox{%
+		\unvbox\colbreak@box
+		\penalty-\@Mv\unvbox\@cclv}%
+	\fi
+	\splittopskip\topskip
+	\splitmaxdepth\maxdepth
+	\dimen@\@colroom
+	\divide\skip\footins\col@number
+	\ifvoid\footins \else
+	\leave@mult@footins
+	\fi
+	\let\ifshr@kingsaved\ifshr@king
+	\ifvbox \@kludgeins
+	\advance \dimen@ -\ht\@kludgeins
+	\ifdim \wd\@kludgeins>\z@
+	\shr@nkingtrue
+	\fi
+	\fi
+	\process@cols\mult@gfirstbox{%
+		%%%%% START CHANGE
+		\ifnum\count@=\numexpr\mult@rightbox+2\relax
+		\setbox\count@\vsplit\@cclv to \dimexpr \dimen@-1cm\relax
+		\setbox\count@\vbox to \dimen@{\vbox to 1cm{\header}\unvbox\count@\vss}%
+		\else
+		\setbox\count@\vsplit\@cclv to \dimen@
+		\fi
+		%%%%% END CHANGE
+		\set@keptmarks
+		\setbox\count@
+		\vbox to\dimen@
+		{\unvbox\count@
+			\remove@discardable@items
+			\ifshr@nking\vfill\fi}%
+	}%
+	\setbox\mult@rightbox
+	\vsplit\@cclv to\dimen@
+	\set@keptmarks
+	\setbox\mult@rightbox\vbox to\dimen@
+	{\unvbox\mult@rightbox
+		\remove@discardable@items
+		\ifshr@nking\vfill\fi}%
+	\let\ifshr@king\ifshr@kingsaved
+	\ifvoid\@cclv \else
+	\unvbox\@cclv
+	\ifnum\outputpenalty=\@M
+	\else
+	\penalty\outputpenalty
+	\fi
+	\ifvoid\footins\else
+	\PackageWarning{multicol}%
+	{I moved some lines to
+		the next page.\MessageBreak
+		Footnotes on page
+		\thepage\space might be wrong}%
+	\fi
+	\ifnum \c@tracingmulticols>\thr@@
+	\hrule\allowbreak \fi
+	\fi
+	\ifx\@empty\kept@firstmark
+	\let\firstmark\kept@topmark
+	\let\botmark\kept@topmark
+	\else
+	\let\firstmark\kept@firstmark
+	\let\botmark\kept@botmark
+	\fi
+	\let\topmark\kept@topmark
+	\mult@info\tw@
+	{Use kept top mark:\MessageBreak
+		\meaning\kept@topmark
+		\MessageBreak
+		Use kept first mark:\MessageBreak
+		\meaning\kept@firstmark
+		\MessageBreak
+		Use kept bot mark:\MessageBreak
+		\meaning\kept@botmark
+		\MessageBreak
+		Produce first mark:\MessageBreak
+		\meaning\firstmark
+		\MessageBreak
+		Produce bot mark:\MessageBreak
+		\meaning\botmark
+		\@gobbletwo}%
+	\setbox\@cclv\vbox{\unvbox\partial@page
+		\page@sofar}%
+	\@makecol\@outputpage
+	\global\let\kept@topmark\botmark
+	\global\let\kept@firstmark\@empty
+	\global\let\kept@botmark\@empty
+	\mult@info\tw@
+	{(Re)Init top mark:\MessageBreak
+		\meaning\kept@topmark
+		\@gobbletwo}%
+	\global\@colroom\@colht
+	\global \@mparbottom \z@
+	\process@deferreds
+	\@whilesw\if@fcolmade\fi{\@outputpage
+		\global\@colroom\@colht
+		\process@deferreds}%
+	\mult@info\@ne
+	{Colroom:\MessageBreak
+		\the\@colht\space
+		after float space removed
+		= \the\@colroom \@gobble}%
+	\set@mult@vsize \global
+	\fi}
+
+\makeatother
+\setlength{\parindent}{0pt}
+
+\begin{document}
+	\begin{multicols*}{5}
+		\section*{\large Physical Constants}
+		\subsection*{Gravity Acceleration on Earth:}
+		$$ g = 9.81 \frac{m}{s^2} $$
+		\subsection*{Mass of Proton, Neutron}
+		$$m_p = m_n = 1.67 \times 10^{-27} kg$$
+		\subsection*{Mass of Electron}
+		$$m_e = 9.11 \times 10^{-31} kg$$
+		\subsection*{Coulomb's Law Constant}
+		$$ k = \frac{1}{4 \pi \epsilon_0} = 8.99 \times 10^9 \frac{N m^2}{C^2}$$
+		\subsection*{Permittivity of Free Space}
+		$$ \epsilon_0 = 8.85 \times 10^{-12} \frac{C^2}{N m^2}$$
+		\subsection*{Permeability of Free Space}
+		$$ \mu_0 = 1.26 \times 10^{-6} \frac{T m}{A} $$
+		\subsection*{Fundamental Unit of Charge}
+		$$ e = 1.60 \times 10^{-19} C$$
+		\subsection*{Speed of Light in Vacuum}
+		$$ c = 3.0 \times 10^{8} \frac{m}{s} $$
+		\subsection*{Planck's Constant}
+		$$ h = 6.63 \times 10^{-34} Js = 4.14 \times 10^{-15} eVs$$
+		\subsection*{Bohr radius}
+		$$ a_B = 5.29 \times 10^{-11} m$$
+		\subsection*{Quadratic Equation}
+		$$x = \frac{-b \pm \sqrt{b^2 - 4 ac}}{2 a}$$
+		\subsection*{ Small Angle Approximation}
+		$$\mbox{if} \quad \theta << 1 \quad \mbox{radian:}$$
+		$$ \sin\theta \approx \tan\theta \approx \theta  $$
+		$$\cos\theta \approx 1$$
+		\subsection*{Volume of a Sphere}
+		$$V = \frac{4}{3} \pi r^3$$
+		\subsection*{Surface Area of a Sphere}
+		$$ A = 4 \pi r^2 $$
+		\section*{\large Electrostatics}
+		$$ \vec{F} = \vec{E} q$$
+		$$ \vec{F} = m \vec{a}$$
+		\subsection*{Coulomb's Law}
+		$$ F = k \frac{q_1 q_2}{r^2} \hat{r}$$
+		\subsection*{E Field Due to:}
+		$$ \vec{E} = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} \hat{r} \quad  \mbox{(point charge)}$$
+		$$ \vec{E} = \frac{1}{4 \pi \epsilon_0} \frac{2 \vec{p}}{r^3} \quad \mbox{(dipole, on axis)} $$
+		$$ \small \vec{E} = - \frac{1}{4 \pi \epsilon_0} \frac{\vec{p}}{r^3} \quad \mbox{(dipole, bisecting plane)}$$
+		$$ \vec{p} = q \vec{s}$$
+		$$ |\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{2 |\lambda|}{r} \quad \mbox{(line of charge)}$$
+		$$ \small E_z = \frac{\eta}{2 \epsilon_0} (1-\frac{z}{\sqrt{z^2+R^2}}) \quad \mbox{(disc of charge)}$$
+		$$ |\vec{E}| = \frac{\eta}{2 \epsilon_0} \quad \mbox{(plane of charge)}$$
+		$$ \vec{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \hat{r} \quad \mbox{(sphere of charge)}$$
+		$$\vec{E} = \frac{\eta}{\epsilon_0} = \frac{Q}{\epsilon_0 A} \quad \mbox{(capacitor)}$$
+		\subsection*{Electric Flux}
+		$$ \Phi_e = \int \vec{E} \cdot d\vec{A}$$
+		\subsection*{Gauss' Law}
+		$$ \Phi_e = \frac{Q_{in}}{\epsilon_0} $$
+		\subsection*{Electric Potential}
+		$$ E_s = -\frac{dV}{ds} $$
+		$$ \Delta V = V_f - V_i = - \int_{s_i}^{s_f} E_s ds = - \int_{i}^{f} \vec{E} \cdot d\vec{s}$$
+		$$ V = E s \quad \mbox{(inside capacitor)}$$
+		$$ V = \frac{1}{4 \pi \epsilon_0} \frac{q}{r} \quad \mbox{(around point charge)}$$
+		$$ \Delta V = I R \quad \mbox{(across resistor)} $$
+		\subsection*{Electric Potential Energy}
+		$$ U = q V$$
+		$$ \Delta K + \Delta U = 0$$
+		$$\small  U = U_0 + q E s \quad \mbox{(charge in uniform field)} $$
+		$$ U = \frac{1}{4 \pi \epsilon_0} \frac{q_1 q_2}{r} \quad \mbox{(two point charges)} $$
+		$$ U = -\vec{p} \cdot \vec{E} \quad \mbox{(dipole)}$$
+		\section*{\large Circuits}
+		\subsection*{Kirchhoff's Junction Law}
+		$$ \sum I_{in} = \sum I_{out} $$
+		\subsection*{Kirchhoff's Loop Law}
+		$$ \sum_{\mbox{n in loop}} (\Delta V_n) = 0$$
+		\subsection*{$\Delta V$ Across Components: }
+		$$ \Delta V = \pm \varepsilon  \quad \mbox{(battery)} $$
+		$$ \Delta V = \pm I R \quad \mbox{(resistor)}$$
+		$$ \Delta V = \pm \frac{Q}{C} \quad \mbox{(capacitor)}$$
+		$$ \Delta V = \pm L \frac{dI}{dt} \quad \mbox{(inductor)}$$
+		\subsection*{Resistors in Series}
+		$$\Delta V_{eqv} = \Delta V_1 + \Delta V_2 + \dots + \Delta V_N$$
+		$$ I_{in} = I_1 = I_2 = \dots = I_N$$
+		$$ R_{eqv} = R_1 + R_2 + \dots + R_N $$
+		\subsection*{Resistors in Parallel}
+		$$ \Delta V_{eqv} = \Delta V_1 = \Delta V_2 = \dots = \Delta V_N $$
+		$$ I_{in} = I_1 + I_2 + \dots + I_N $$
+		$$\frac{1}{R_{eqv}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_N}$$
+		\subsection*{Capacitors in Series}
+		$$\Delta V_{eqv} = \Delta V_1 + \Delta V_2 + \dots + \Delta V_N$$
+		$$ Q_{eqv} = Q_1 = Q_2 = \dots = Q_N$$
+		$$\frac{1}{C_{eqv}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots + \frac{1}{C_N}$$
+		\subsection*{Capacitors in Parallel}
+		$$ \Delta V_{eqv} = \Delta V_1 = \Delta V_2 = \dots = \Delta V_N $$
+		$$ Q_{eqv} = Q_1 + Q_2 + \dots + Q_N $$
+		$$ C_{eqv} = C_1 + C_2 + \dots + C_N $$
+		\subsection*{Power and Energy}
+		$$ P = I \varepsilon \quad \mbox{(battery)}$$
+		$$ P = I \Delta V_R  = \frac{(\Delta V_R)^2}{R} \quad \mbox{(Resistor)}$$
+		$$ U = \frac{1}{2} C (\Delta V)^2 \quad \mbox{(Capacitor)}$$
+		$$ U = \frac{1}{2} L I^2 \quad \mbox{(inductor)} $$
+		$$ \small u_B = \frac{1}{2 \mu_0} B^2 \quad \mbox{(inductor energy density)}$$
+				\subsection*{Inductance of Solenoid}
+				$$ L = \frac{\mu_0 N^2 A}{l} $$
+				\subsection*{LC Circuits}
+				$$ \omega = \sqrt{\frac{1}{L C}}$$
+				\subsection*{LR Circuits}
+				$$ \tau = \frac{L}{R} $$
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+						\newline
+		\section*{\large Current and Resistance}
+		$$ N_e = \eta_e V = \eta_e A \Delta x = \eta_e A v_d \Delta t$$
+		$$ i_e = \eta_e A v_d = \frac{\eta_e e \tau A}{m} E$$
+		$$v_d = \frac{e \tau}{m} E$$
+		$$ I = e i_e = \eta_e e v_d A $$
+		$$ J = \frac{I}{A} = \eta_e e v_d$$
+		$$ J = \sigma E $$
+		$$ \Delta V_{wire} = I R $$
+		$$ \sigma = \frac{\eta_e e^2 \tau}{m} $$
+
+		$$ \rho = \frac{1}{\sigma} $$
+		$$ R = \frac{\rho L}{A}$$
+		$$ E_{wire} = \frac{\Delta V_{wire}}{L} $$
+
+		\section*{\large Magnetic Fields}
+		$$ \vec{F} = q(\vec{v} \times \vec{B}) = q v B \sin(\alpha) \hat{n} $$
+		$$ \vec{F} = I (\vec{l} \times \vec{B}) $$
+		\subsection*{B Field Due To:}
+		$$ \vec{B} = \frac{\mu_0}{4 \pi} \frac{q \vec{v} \times \hat{r}}{r^2} \quad \mbox{(point charge)}$$
+		$$\vec{B} = \frac{\mu_0}{4 \pi} \frac{I \Delta \vec{s} \times \hat{r}}{r^2} \quad \mbox{(segment of current)}$$
+		$$ |\vec{B}| = \frac{\mu_0 N I}{2 R} \quad \mbox{(coil, in center)} $$
+		$$ |\vec{B}| = \mu_0 n I \quad \mbox{(solenoid, inside)}$$
+		$$ |\vec{B}| = \frac{\mu_0 I}{2 \pi d} \quad \mbox{(wire, infinite)}$$
+		\subsection*{Magnetic Flux}
+		$$\Phi_m = \int \vec{B} \cdot d \vec{A}$$
+		$$ \small  \Phi_m = \vec{B} \cdot \vec{A} = |\vec{B}||\vec{A}|\cos\theta \quad \mbox{(uniform B)} $$
+		\subsection*{Faraday's Law}
+		$$ \varepsilon = N \left| \frac{d \Phi_m}{dt} \right| $$
+		\subsection*{Ampere's Law}
+		$$ \oint \vec{B} \cdot d\vec{s} = \mu_0 I_{through}$$ 
+		\section*{\large Electromagnetic Fields}
+		$$v_{em} = c = \frac{1}{\sqrt{\epsilon_0 \mu_0}}$$
+		$$ E = c B$$
+		$$ I = \frac{P}{A} = \frac{1}{2 c \mu_0} E_0^2$$
+		\subsection*{Poynting Vector}
+		$$ \vec{S} = \frac{1}{\mu_0} (\vec{E} \times \vec{B})$$
+		\section*{\large Maxwell's Equations}
+		$$ \oint \vec{E} \cdot d \vec{A} = \frac{Q_{in}}{\epsilon_0} $$
+		$$ \oint \vec{B} \cdot d \vec{A} = 0$$
+		$$ \oint \vec{E} \cdot d \vec{s} = \frac{-d \Phi_m}{dt} $$
+		$$ \oint \vec{B} \cdot d \vec{s} = \mu_0 I_{through} + \epsilon_0 \mu_0 \frac{d \Phi_e}{dt}$$
+		\subsection*{Lorentz Force Law}
+		$$ \vec{F} = q (\vec{E} + \vec{v} \times \vec{B}) $$
+		\section*{Malus' Law}
+		$$ I = I_0 \cos^2 \theta $$
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		 
+	\end{multicols*}
+\end{document}
