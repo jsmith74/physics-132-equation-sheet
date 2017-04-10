@@ -9,13 +9,13 @@
 %\usepackage[lf,minionint]{MinionPro}
 \usepackage{multicol}
 \usepackage{wrapfig}
-\usepackage[top=0mm,bottom=1mm,left=0mm,right=1mm]{geometry}
+\usepackage[top=4mm,bottom=14mm,left=4mm,right=4mm]{geometry}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{microtype}
 
 \let\bar\overline
 
-\definecolor{myblue}{cmyk}{1,.72,0,.38}
+\definecolor{myblue}{cmyk}{0,0,0,100}
 
 \def\firstcircle{(0,0) circle (1.5cm)}
 \def\secondcircle{(0:2cm) circle (1.5cm)}
@@ -219,10 +219,10 @@
 		$$ \small \vec{E} = - \frac{1}{4 \pi \epsilon_0} \frac{\vec{p}}{r^3} \quad \mbox{(dipole, bisecting plane)}$$
 		$$ \vec{p} = q \vec{s}$$
 		$$ |\vec{E}| = \frac{1}{4 \pi \epsilon_0} \frac{2 |\lambda|}{r} \quad \mbox{(line of charge)}$$
-		$$ \small E_z = \frac{\eta}{2 \epsilon_0} (1-\frac{z}{\sqrt{z^2+R^2}}) \quad \mbox{(disc of charge)}$$
 		$$ |\vec{E}| = \frac{\eta}{2 \epsilon_0} \quad \mbox{(plane of charge)}$$
 		$$ \vec{E} = \frac{Q}{4 \pi \epsilon_0 r^2} \hat{r} \quad \mbox{(sphere of charge)}$$
 		$$\vec{E} = \frac{\eta}{\epsilon_0} = \frac{Q}{\epsilon_0 A} \quad \mbox{(capacitor)}$$
+		$$ \small E_z = \frac{\eta}{2 \epsilon_0} (1-\frac{z}{\sqrt{z^2+R^2}}) \quad \mbox{(disc)}$$
 		\subsection*{Electric Flux}
 		$$ \Phi_e = \int \vec{E} \cdot d\vec{A}$$
 		\subsection*{Gauss' Law}
@@ -244,7 +244,7 @@
 		$$ \sum I_{in} = \sum I_{out} $$
 		\subsection*{Kirchhoff's Loop Law}
 		$$ \sum_{\mbox{n in loop}} (\Delta V_n) = 0$$
-		\subsection*{$\Delta V$ Across Components: }
+		\subsection*{Voltage Across Components: }
 		$$ \Delta V = \pm \varepsilon  \quad \mbox{(battery)} $$
 		$$ \Delta V = \pm I R \quad \mbox{(resistor)}$$
 		$$ \Delta V = \pm \frac{Q}{C} \quad \mbox{(capacitor)}$$
@@ -289,15 +289,6 @@
 						\newline
 						\newline
 						\newline
-						\newline
-						\newline
-						\newline
-						\newline
-						\newline
-						\newline
-						\newline
-						\newline
-						\newline
 		\section*{\large Current and Resistance}
 		$$ N_e = \eta_e V = \eta_e A \Delta x = \eta_e A v_d \Delta t$$
 		$$ i_e = \eta_e A v_d = \frac{\eta_e e \tau A}{m} E$$
@@ -317,7 +308,7 @@
 		$$ \vec{F} = I (\vec{l} \times \vec{B}) $$
 		\subsection*{B Field Due To:}
 		$$ \vec{B} = \frac{\mu_0}{4 \pi} \frac{q \vec{v} \times \hat{r}}{r^2} \quad \mbox{(point charge)}$$
-		$$\vec{B} = \frac{\mu_0}{4 \pi} \frac{I \Delta \vec{s} \times \hat{r}}{r^2} \quad \mbox{(segment of current)}$$
+		$$ \small \vec{B} = \frac{\mu_0}{4 \pi} \frac{I \Delta \vec{s} \times \hat{r}}{r^2} \quad \mbox{(segment of current)}$$
 		$$ |\vec{B}| = \frac{\mu_0 N I}{2 R} \quad \mbox{(coil, in center)} $$
 		$$ |\vec{B}| = \mu_0 n I \quad \mbox{(solenoid, inside)}$$
 		$$ |\vec{B}| = \frac{\mu_0 I}{2 \pi d} \quad \mbox{(wire, infinite)}$$
@@ -334,6 +325,8 @@
 		$$ I = \frac{P}{A} = \frac{1}{2 c \mu_0} E_0^2$$
 		\subsection*{Poynting Vector}
 		$$ \vec{S} = \frac{1}{\mu_0} (\vec{E} \times \vec{B})$$
+		\subsection*{ Malus' Law}
+		$$ I = I_0 \cos^2 \theta $$
 		\section*{\large Maxwell's Equations}
 		$$ \oint \vec{E} \cdot d \vec{A} = \frac{Q_{in}}{\epsilon_0} $$
 		$$ \oint \vec{B} \cdot d \vec{A} = 0$$
@@ -341,13 +334,27 @@
 		$$ \oint \vec{B} \cdot d \vec{s} = \mu_0 I_{through} + \epsilon_0 \mu_0 \frac{d \Phi_e}{dt}$$
 		\subsection*{Lorentz Force Law}
 		$$ \vec{F} = q (\vec{E} + \vec{v} \times \vec{B}) $$
-		\section*{Malus' Law}
-		$$ I = I_0 \cos^2 \theta $$
 		\newline
 		\newline
 		\newline
 		\newline
 		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline
+		\newline		 
 		 
 	\end{multicols*}
 \end{document}
