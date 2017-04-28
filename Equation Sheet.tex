@@ -210,8 +210,7 @@
 		\subsection*{Surface Area of a Sphere}
 		$$ A = 4 \pi r^2 $$
 		\section*{\large Electrostatics}
-		$$ \vec{F} = \vec{E} q$$
-		$$ \vec{F} = m \vec{a}$$
+		$$ \vec{F} = \vec{E} q \quad \quad \vec{F} = m \vec{a}$$
 		\subsection*{Coulomb's Law}
 		$$ F = k \frac{q_1 q_2}{r^2} \hat{r}$$
 		\subsection*{E Field Due to:}
@@ -287,9 +286,7 @@
 		$$ J = \sigma E $$
 		$$ \Delta V_{wire} = I R $$
 		$$ \sigma = \frac{\eta_e e^2 \tau}{m} $$
-
-		$$ \rho = \frac{1}{\sigma} $$
-		$$ R = \frac{\rho L}{A}$$
+		$$ \rho = \frac{1}{\sigma} \quad \quad R = \frac{\rho L}{A}$$
 		$$ E_{wire} = \frac{\Delta V_{wire}}{L} $$
 
 		\section*{\large Magnetic Fields}
@@ -303,7 +300,7 @@
 		$$ |\vec{B}| = \frac{\mu_0 I}{2 \pi d} \quad \mbox{(wire, infinite)}$$
 		\subsection*{Magnetic Flux}
 		$$\Phi_m = \int \vec{B} \cdot d \vec{A}$$
-		$$ \small  \Phi_m = \vec{B} \cdot \vec{A} = |\vec{B}||\vec{A}|\cos\theta \quad \mbox{(uniform B)} $$
+		$$ \small  \Phi_m = \vec{B} \cdot \vec{A} = |\vec{B}||\vec{A}|\cos\theta \quad \mbox{(uniform)} $$
 		\subsection*{Faraday's Law}
 		$$ \varepsilon = N \left| \frac{d \Phi_m}{dt} \right| $$
 		\subsection*{Ampere's Law}
@@ -323,27 +320,66 @@
 		$$ \oint \vec{B} \cdot d \vec{s} = \mu_0 I_{through} + \epsilon_0 \mu_0 \frac{d \Phi_e}{dt}$$
 		\subsection*{Lorentz Force Law}
 		$$ \vec{F} = q (\vec{E} + \vec{v} \times \vec{B}) $$
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline
-		\newline		 
-		 
+		\section*{\large AC Circuits}
+		$$ \varepsilon = \varepsilon_0 \cos \omega t \quad \quad \omega = 2 \pi f $$
+		$$ V_{rms} = \frac{V}{\sqrt{2}}, \quad I_{rms} = \frac{I}{\sqrt{2}} $$
+		$$ \varepsilon_{rms} = \frac{\varepsilon_0}{\sqrt{2}} $$
+		\subsection*{Resistors}
+		$$\mbox{i and v: In Phase}$$
+		$$ V_R = I R $$
+		$$ P_{avg} = I_{rms} V_{rms} $$
+		\subsection*{Capacitors}
+		$$ \mbox{i leads v by } 90^\circ $$
+		$$ V_C = I X_C \quad \quad X_C = \frac{1}{\omega C} $$
+		$$ P_{avg} = 0 $$
+		\subsection*{Inductors}
+		$$ \mbox{i lags v by } 90^\circ $$
+		$$ V_L = I X_L \quad \quad X_L = \omega L $$
+		$$ P_{avg} = 0 $$
+		\subsection*{RC Filter Circuits}
+		$$ V_C = \frac{\varepsilon_0 X_C}{\sqrt{R^2 + X_C^2}} $$
+		$$ V_R = \frac{\varepsilon_0 R}{\sqrt{R^2 + X_C^2}} $$
+		\subsection*{Series RLC Circuits}
+		$$ I = \frac{\varepsilon_0}{Z} $$
+		$$ Z = \sqrt{R^2 + (X_L+X_C)^2} $$
+		$$ V_R = I R \quad V_L = I X_L $$
+		$$ V_C = I X_C $$
+		$$ \omega_0 =1/\sqrt{L C}$$
+		$$ \phi = \tan^{-1} ((X_L-X_C)/R)$$
+		$$ P_{source} = I_{rms} \varepsilon_{rms} \cos \phi $$
+		$$ P_R = I_{rms} V_{rms} = I^2_{rms} R $$
+		\section*{\large Wave Optics}
+		\subsection*{Young's Double Slit Experiment}
+		$$ \theta_m = m \frac{\lambda}{d} \quad \quad m=0,1,2,3,\dots $$
+		$$ y_m = \frac{m \lambda L}{d} \quad \quad m=0,1,2,3,\dots $$
+		$$ I_{double} = 4 I_1 \cos^2(\frac{\pi d}{\lambda L} y) $$
+		\subsection*{Diffraction Grating}
+		$$ d \sin \theta_m = m \lambda \quad \quad m=0,1,2,3,\dots $$
+		$$ y_m = L \tan \theta_m $$
+		\subsection*{Single-Slit Diffraction}
+		$$ \theta_p = p \frac{\lambda}{a} \quad \quad p=1,2,3,\dots$$
+		$$ y_p = \frac{p \lambda L}{a} \quad \quad p=1,2,3,\dots$$
+		$$ w= \frac{2 \lambda L}{a} $$
+		\subsection*{Circular-Aperture Diffraction}
+		$$ w = 2 y_1 = 2 L \tan \theta_1 \approx \frac{2.44 \lambda L}{D} $$
+		$$ \theta_1 = \frac{1.22 \lambda}{D} \quad \quad y_1 = \frac{1.22 \lambda L}{D} $$
+		\subsection*{Interferometers}
+		$$ \Delta m = \frac{\Delta L_2}{\lambda/2} $$
+		\section*{\large Ray Optics}
+		$$ n = \frac{c}{v} $$
+		\subsection*{Snell's Law of Refraction}
+		$$ n_1 \sin \theta_1 = n_2 \sin \theta_2 $$
+		\subsection*{Reflection}
+		$$ \theta_r = \theta_i $$
+		$$ \theta_c = \sin^{-1}(\frac{n_2}{n_1}) $$
+		\subsection*{Ray Tracing}
+		$$ m = -\frac{s'}{s} $$
+		\subsection*{Thin Lenses}
+		$$ \frac{1}{f} = \frac{1}{s} + \frac{1}{s'}$$
+		$$ \frac{1}{f} = (n-1)(\frac{1}{R_1} - \frac{1}{R_2})$$
+		\subsection*{Spherical Surface}
+		$$ \frac{n_1}{s} + \frac{n_2}{s'} = \frac{n_2 - n_1}{R} $$
+		\subsection*{Plane Surface}
+		$$ R \rightarrow \infty, \quad |s'/s| = n_2/n_1 $$
 	\end{multicols*}
 \end{document}
